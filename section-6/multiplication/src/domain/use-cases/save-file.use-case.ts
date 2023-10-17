@@ -24,7 +24,6 @@ export class SaveFile implements SaveFileUseCase {
       const path = `${fileDestination}/${fileName}.txt`
 
       fs.mkdirSync(fileDestination, { recursive: true })
-  
       fs.writeFileSync(path, fileContent)
 
       return true
