@@ -11,11 +11,14 @@
   },
   "scripts": {
     "tsc:watch": "tsc --watch",
-		"dev": "tsnd --respawn src/app.ts",
-		"build": "rimraf ./dist && tsc",
-		"start": "npm run build && node dist/app.js"
+    "dev": "tsnd --respawn src/app.ts",
+    "build": "rimraf ./dist && tsc",
+    "start": "npm run build && node dist/app.js"
   },
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "cron": "^3.1.1"
+  }
 }
