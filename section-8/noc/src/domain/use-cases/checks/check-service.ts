@@ -9,6 +9,8 @@ type SuccessCallback = () => void
 type ErrorCallback = (error: string) => void
 
 
+const fileNameOrigin = 'check-service.ts'
+
 export class CheckService implements CheckServiceUseCase {
 
   constructor(
@@ -23,14 +25,14 @@ export class CheckService implements CheckServiceUseCase {
       const req = await fetch(url);
       if(!req.ok) throw new Error(`Error on check service ${url}`) 
       
-      const log = new LogEntity(`Service ${url} working`, LogSeverityLevel.low)
+      const log = new LogEntity({ message: `Service ${url} working`, level: LogSeverityLevel.low, origin: fileNameOrigin  })
       this.logRepository.saveLog(log)
       
       this.successCallback && this.successCallback()
       return true
     } catch (error) {
       const errorString = `${url} is not ok. ${error}`
-      const log = new LogEntity(errorString, LogSeverityLevel.high)
+      const log = new LogEntity({ message: errorString, level: LogSeverityLevel.high, origin: fileNameOrigin })
       this.logRepository.saveLog(log)
 
       this.errorCallback && this.errorCallback(errorString)

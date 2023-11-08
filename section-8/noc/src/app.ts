@@ -7,6 +7,5 @@ import 'dotenv/config'
 })()
 
 function main() {
-  console.log(envs)
-  //ServerApp.start()
+  ServerApp.start()
 }
